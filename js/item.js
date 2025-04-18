@@ -14,9 +14,9 @@ window.addEventListener("load", async function() {
         const response = await fetch(`${url_API}/${idTache}`);
         tache = await response.json();
         if (tache.is_complete) {
-            ouvrir.classList.add('hide');
-        } else {
             fermer.classList.add('hide');
+        } else {
+            ouvrir.classList.add('hide');
         }
         //On complete la page avec les infos de la page
         document.querySelector("h1.masthead-heading").innerHTML = tache.text;
