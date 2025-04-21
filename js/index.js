@@ -6,7 +6,6 @@ const inputPrenom = document.getElementById('prenom');
 
 form.addEventListener('submit', (e) => {
     try {
-        console.log(location)
         e.preventDefault();
         verifierPrenom(inputPrenom.value);
         localStorage.setItem('prenom_todo', JSON.stringify(prenom.value));

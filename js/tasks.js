@@ -9,6 +9,7 @@ const accesStats = document.getElementById("stats");
 
 window.addEventListener("load", async function() {
     try {
+        console.log(location)
         const response = await fetch(url_API);
         const json = await response.json();
         const todolist = json[0].todolist.sort((a,b) => a.is_complete - b.is_complete);
