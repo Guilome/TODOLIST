@@ -1,11 +1,11 @@
 const form = document.querySelector('form');
-const url_taches = `${location.href}tasks.html`;
 const dialog = document.querySelector("dialog");
 const fermerModal = document.querySelector('button.close');
 const inputPrenom = document.getElementById('prenom');
 
 form.addEventListener('submit', (e) => {
     try {
+        console.log(url_API);
         e.preventDefault();
         verifierPrenom(inputPrenom.value);
         localStorage.setItem('prenom_todo', JSON.stringify(prenom.value));

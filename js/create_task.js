@@ -1,4 +1,3 @@
-const url_API = "http://localhost:3000/todos";
 const ajoutTag = document.getElementById('addTag');
 const form = document.querySelector('form');
 const div = document.querySelector('div.form-group');

@@ -1,7 +1,3 @@
-const url_API = "http://localhost:3000/todos";
-const url_ecran_creation = `${location.href}create_task.html`;
-const url_detail = `${location.href}item.html`;
-const url_stats = `${location.href}stat.html`;
 const div = document.getElementById('app');
 const template = document.getElementById('task-template');
 const ajoutTache = document.getElementById('ajoutTache');
@@ -31,7 +27,7 @@ window.addEventListener("load", async function() {
             id.textContent = todo.id;
             text.textContent = todo.text;
             lien.setAttribute('id', todo.id);
-            console.info(`la tâche "` + todo.text + `" à été affiché.`);
+            console.info(`La tâche "` + todo.text + `" à été affiché.`);
             // On ajoute la card a la div principale
             div.append(card);
         }
@@ -42,7 +38,7 @@ window.addEventListener("load", async function() {
 });
 
 ajoutTache.addEventListener('click', function() {
-    window.open(url_ecran_creation,"mozillaWindow","popup");
+    window.open(url_creation,"mozillaWindow","popup");
 })
 
 window.addEventListener( "pageshow", function ( event ) {
