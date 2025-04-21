@@ -6,6 +6,7 @@ const div = document.getElementById('app');
 const fermer = document.getElementById('fermer');
 const ouvrir = document.getElementById('ouvrir');
 const supprimer = document.getElementById('supprimer');
+const retourListe = document.getElementById("retourListe");
 
 window.addEventListener("load", async function() {
     try {
@@ -45,6 +46,11 @@ supprimer.addEventListener("click", async function() {
         console.error(e.message);
     }
 
+});
+
+retourListe.addEventListener("click", async e => {
+    e.preventDefault();
+    window.location = url_taches;
 });
 
 function changerStatut() {

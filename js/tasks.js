@@ -1,9 +1,11 @@
 const url_API = "http://localhost:3000/todos";
 const url_ecran_creation = location.origin + "/todos-front-main/create_task.html";
 const url_detail = `${location.origin}/todos-front-main/item.html`;
+const url_stats = location.origin + "/todos-front-main/stat.html";
 const div = document.getElementById('app');
 const template = document.getElementById('task-template');
 const ajoutTache = document.getElementById('ajoutTache');
+const accesStats = document.getElementById("stats");
 
 window.addEventListener("load", async function() {
     try {
@@ -46,6 +48,11 @@ window.addEventListener( "pageshow", function ( event ) {
     if ( event.persisted ) {
         window.location.reload();
     }
+});
+
+accesStats.addEventListener("click", async e => {
+    e.preventDefault();
+    window.location = url_stats;
 });
 
 function getdetail(element) {

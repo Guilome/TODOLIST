@@ -34,6 +34,7 @@
     </header>
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
+            <button class="btn btn-primary" type="button" id="retourListe">Retour à la liste des tâches</button>
             <div id="app">
                 <div class="detail">
                     <div class="info">
@@ -52,14 +53,14 @@
                     </div>
                     <div class="action">
                         <!--validation / Ouvrir-->
-                        <button class="btn btn-primary" type="button" id="fermer" onclick="changerStatut()">
+                        <button class="btn btn-primary action-btn" type="button" id="fermer" onclick="changerStatut()">
                             <i class="fa-solid fa-check"></i>
                         </button>
-                        <button class="btn btn-primary" type="button" id="ouvrir" onclick="changerStatut()">
+                        <button class="btn btn-primary action-btn" type="button" id="ouvrir" onclick="changerStatut()">
                             <i class="fa-solid fa-rotate-left"></i>
                         </button>
                         <!--suppression -->
-                        <button class="btn btn-primary" type="button" id="supprimer"><i class="fa-solid fa-trash"></i></button>
+                        <button class="btn btn-primary action-btn" type="button" id="supprimer"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 <!-- utiliser le javascript pour afficher les détails de la tâche -->

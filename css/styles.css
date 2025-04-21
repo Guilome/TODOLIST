@@ -11519,6 +11519,12 @@ html {
   padding: 0.5rem;
 }
 
+.action-liste{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 #id{
   margin: unset;
   width: 10%;
@@ -11590,7 +11596,7 @@ dialog .close {
   justify-content: space-between;
 }
 
-.action button {
+.action-btn {
   height: 200px;
   width: 200px;
   font-size: 100px;
