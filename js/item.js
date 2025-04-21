@@ -1,5 +1,5 @@
 const url_API = "http://localhost:3000/todos";
-const url_taches = location.origin + "/todos-front-main/tasks.html";
+const url_taches = `${location.href}tasks.html`;
 let idTache = 0;
 let tache = null;
 const div = document.getElementById('app');

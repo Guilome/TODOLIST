@@ -1,5 +1,5 @@
 const url_API = "http://localhost:3000/todos";
-const url_taches = location.origin + "/todos-front-main/tasks.html";
+const url_taches = `${location.href}tasks.html`;
 const ctx = document.getElementById('myChart');
 const retourListe = document.getElementById("retourListe");
 let tacheTerminee = 0;

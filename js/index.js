@@ -1,5 +1,5 @@
 const form = document.querySelector('form');
-const url_taches = location.origin + "/todos-front-main/tasks.html";
+const url_taches = `${location.href}tasks.html`;
 const dialog = document.querySelector("dialog");
 const fermerModal = document.querySelector('button.close');
 const inputPrenom = document.getElementById('prenom');
