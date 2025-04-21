@@ -1,4 +1,5 @@
 const url_API = "http://localhost:3000/todos";
+const url_taches = location.origin + "/todos-front-main/tasks.html";
 let idTache = 0;
 let tache = null;
 const div = document.getElementById('app');
@@ -13,12 +14,13 @@ window.addEventListener("load", async function() {
         idTache = param.get("id");
         const response = await fetch(`${url_API}/${idTache}`);
         tache = await response.json();
+        // On cache ou non le bouton pour changer le statut de la tache en ouvert ou fermer
         if (tache.is_complete) {
             fermer.classList.add('hide');
         } else {
             ouvrir.classList.add('hide');
         }
-        //On complete la page avec les infos de la page
+        //On complete la page avec les informations de la tache
         document.querySelector("h1.masthead-heading").innerHTML = tache.text;
         document.querySelector("div#id").textContent = tache.id;
         document.querySelector("div#date").textContent = new Date(tache.created_at).toLocaleString("fr-FR");
@@ -34,7 +36,16 @@ window.addEventListener("load", async function() {
     }
 });
 
-supprimer.addEventListener("click", async function() {});
+supprimer.addEventListener("click", async function() {
+    try {
+        fetch(`${url_API}/${idTache}`, {method: "DELETE"});
+        // Une fois la suppression faite on redirige vers la liste des taches
+        window.location = url_taches;
+    } catch (error) {
+        console.error(e.message);
+    }
+
+});
 
 function changerStatut() {
     console.info('Tâche : ', tache)
@@ -50,6 +61,7 @@ function changerStatut() {
         body: JSON.stringify(tache)
     }).then(r => {
         if (r.ok) {
+            // On ajoute ou retire la classe hide en fonctino du nouveau statut de la tache
             if (tache.is_complete) {
                 fermer.classList.add('hide');
                 ouvrir.classList.remove('hide');
@@ -57,6 +69,7 @@ function changerStatut() {
                 ouvrir.classList.add('hide');
                 fermer.classList.remove('hide');
             }
+            // On recharge la page
             window.location.reload();
         } else {
             throw new Error(`Erreur ${r.status} lors du changement de statut de la tache.\nMessage d'erreur : ${r.statusText}`);
