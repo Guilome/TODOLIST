@@ -39,7 +39,7 @@ supprimer.addEventListener("click", async function() {
     try {
         fetch(`${url_API}/${idTache}`, {method: "DELETE"});
         // Une fois la suppression faite on redirige vers la liste des taches
-        window.location = url_taches;
+        navigation("tasks.html")
     } catch (error) {
         console.error(e.message);
     }
@@ -48,7 +48,7 @@ supprimer.addEventListener("click", async function() {
 
 retourListe.addEventListener("click", async e => {
     e.preventDefault();
-    window.location = url_taches;
+    navigation("tasks.html")
 });
 
 function changerStatut() {

@@ -38,7 +38,7 @@ window.addEventListener("load", async function() {
 });
 
 ajoutTache.addEventListener('click', function() {
-    window.open(url_creation,"mozillaWindow","popup");
+    window.open(getUrl("create_task.html"),"mozillaWindow","popup");
 })
 
 window.addEventListener( "pageshow", function ( event ) {
@@ -49,10 +49,9 @@ window.addEventListener( "pageshow", function ( event ) {
 
 accesStats.addEventListener("click", async e => {
     e.preventDefault();
-    window.location = url_stats;
+    navigation("stat.html")
 });
 
 function getdetail(element) {
-    console.log(`${url_detail}?id=${element.id}`);
-    window.location = `${url_detail}?id=${element.id}`;
+    navigation(`item.html?id=${element.id}`);
 }

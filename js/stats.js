@@ -36,6 +36,6 @@ window.addEventListener("load", async function() {
 
 retourListe.addEventListener("click", async e => {
     e.preventDefault();
-    window.location = url_taches;
+    navigation("tasks.html");
 });
 

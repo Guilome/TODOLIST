@@ -5,11 +5,10 @@ const inputPrenom = document.getElementById('prenom');
 
 form.addEventListener('submit', (e) => {
     try {
-        console.log(url_API);
         e.preventDefault();
         verifierPrenom(inputPrenom.value);
         localStorage.setItem('prenom_todo', JSON.stringify(prenom.value));
-        window.location = url_taches;
+        navigation('tasks.html')
     } catch (error) {
         inputPrenom.classList.add('error');
         console.error(error.message);
