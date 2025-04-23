@@ -1,13 +1,9 @@
-const ajoutTag = document.getElementById('addTag');
 const form = document.querySelector('form');
 const div = document.querySelector('div.form-group');
-const dialogAll = document.getElementById("dialogAll");
-const dialogNom = document.getElementById("dialogNom");
-const dialogTag = document.getElementById("dialogTag");
-const fermerModalNom = document.getElementById('nomClose');
-const fermerModalTag = document.getElementById('tagClose');
-const fermerModalAll = document.getElementById('allClose');
+const dialog = document.querySelector("dialog");
+const fermerModal = document.querySelector('button.close');
 const inputNom = document.getElementById('nomTache');
+const ajoutTag = document.getElementById('addTag');
 let inputTag =  document.querySelectorAll('input#tag');
 
 ajoutTag.addEventListener('click', (e) => {
@@ -46,30 +42,20 @@ form.addEventListener('submit', (e) => {
                 window.opener.location.reload();
                 window.close();
             } else {
+                setTitreModal(`Erreur ${r.status}`);
+                setTexteModal(`Message d'erreur : ${r.statusText}`);
+                dialog.showModal();
                 throw new Error(`Erreur ${r.status} lors de la création de la tache.\nMessage d'erreur : ${r.statusText}`);
             }
-        }).catch(
-            err => {
-                console.error(err.message);
-            }
-        )
-
+        });
     } catch (error) {
         console.error(error.message);
     }
 });
 
-fermerModalNom.addEventListener('click', function() {
-    dialogNom.close()
-});
-
-fermerModalTag.addEventListener('click', function() {
-    dialogTag.close()
-});
-
-fermerModalAll.addEventListener('click', function() {
-    dialogAll.close()
-});
+fermerModal.addEventListener('click', function() {
+    dialog.close()
+})
 
 div.addEventListener('focusin', (e) => {
     if (e.target.classList.contains('error')) {
@@ -89,16 +75,22 @@ function verifForm(tags) {
     }
     if (nomVide && !tagVide) {
         document.getElementById('nomTache').classList.add('error');
-        dialogNom.showModal();
+        setTitreModal('Erreur');
+        setTexteModal('Vous devez renseigner un nom de tâche.');
+        dialog.showModal();
         throw new Error(`Le nom de la tâche n'a pas été renseigné.`);
     } else if (tagVide && !nomVide) {
         document.querySelectorAll('input#tag').forEach(input => input.classList.add('error'));
-        dialogTag.showModal();
+        setTitreModal('Erreur');
+        setTexteModal('Vous devez renseigner au moins un tag pour la tache.');
+        dialog.showModal();
         throw new Error(`Il faut renseigner au moins un tag.`);
     } else if (nomVide && tagVide) {
         document.getElementById('nomTache').classList.add('error');
         document.querySelectorAll('input#tag').forEach(input => input.classList.add('error'));
-        dialogAll.showModal();
-        throw new Error(`Le nom de la tâche est vide.\nles tags sont vides.`);
+        setTitreModal('Erreur');
+        setTexteModal('Vous devez renseigner un nom de tâche.<br/>Vous devez renseigner au moins un tag pour la tache.');
+        dialog.showModal();
+        throw new Error(`Le nom de la tâche est vide.\nLes tags sont vides.`);
     }
 }

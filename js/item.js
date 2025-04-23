@@ -1,10 +1,9 @@
-let idTache = 0;
-let tache = null;
-const div = document.getElementById('app');
 const fermer = document.getElementById('fermer');
 const ouvrir = document.getElementById('ouvrir');
 const supprimer = document.getElementById('supprimer');
 const retourListe = document.getElementById("retourListe");
+let idTache = 0;
+let tache = null;
 
 window.addEventListener("load", async function() {
     try {
@@ -35,13 +34,13 @@ window.addEventListener("load", async function() {
     }
 });
 
-supprimer.addEventListener("click", async function() {
+supprimer.addEventListener("click", async function () {
     try {
-        fetch(`${url_API}/${idTache}`, {method: "DELETE"});
+        await fetch(`${url_API}/${idTache}`, {method: "DELETE"});
         // Une fois la suppression faite on redirige vers la liste des taches
         navigation("tasks.html")
     } catch (error) {
-        console.error(e.message);
+        console.error(error.message);
     }
 
 });

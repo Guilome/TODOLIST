@@ -1,5 +1,6 @@
 const url_API = "http://localhost:3000/todos";
 
+// Fait la direction entre les différentes pages du site
 function navigation(direction) {
     const clearPathname = location.pathname.slice(location.pathname.indexOf("/"), location.pathname.lastIndexOf("/")+1)
     const url = location.origin + clearPathname;
@@ -7,6 +8,7 @@ function navigation(direction) {
     window.location = url + direction;
 }
 
+// Retourne une url donné
 function getUrl(direction){
     const clearPathname = location.pathname.slice(location.pathname.indexOf("/"), location.pathname.lastIndexOf("/")+1)
     const url = location.origin + clearPathname;

@@ -1,23 +1,22 @@
 const ctx = document.getElementById('myChart');
 const retourListe = document.getElementById("retourListe");
-let tacheTerminee = 0;
-let tacheEnCours = 0;
 
 window.addEventListener("load", async function() {
     const response = await fetch(url_API);
     const json = await response.json();
-    tacheTerminee = json[0].todolist.filter(t => t.is_complete).length;
-    tacheEnCours = json[0].todolist.filter(t => !t.is_complete).length;
+    let tacheTerminee = json[0].todolist.filter(t => t.is_complete).length;
+    let tacheEnCours = json[0].todolist.filter(t => !t.is_complete).length;
+    let total = json[0].todolist.length;
 
     const data = {
         labels: [
-            `Total (${json[0].todolist.length})`,
+            `Total (${total})`,
             `En cours (${tacheEnCours})`,
             `Terminées (${tacheTerminee})`
         ],
         datasets: [{
             label: '',
-            data: [json[0].todolist.length, tacheEnCours, tacheTerminee],
+            data: [total, tacheEnCours, tacheTerminee],
             backgroundColor: [
                 'rgb(75, 192, 192)',
                 'rgb(26, 188, 156)',
@@ -28,8 +27,15 @@ window.addEventListener("load", async function() {
     };
 
     new Chart(ctx, {
-        type: 'polarArea',
+        type: 'bar',
         data: data,
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
     });
 
 });

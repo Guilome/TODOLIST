@@ -45,37 +45,18 @@
           </form>
         </div>
       </div>
-      <dialog id="dialogNom">
+      <dialog>
         <div class="title" tabindex="-1">
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <h1>Erreur</h1>
-          <i class="fa-solid fa-circle-exclamation"></i>
+          <h1 id="titleModal"></h1>
         </div>
-        <p>Vous devez renseigner un nom de tâche.</p>
-        <button id="nomClose" class="close">Fermer</button>
-      </dialog>
-      <dialog id="dialogTag">
-        <div class="title" tabindex="-1">
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <h1>Erreur</h1>
-          <i class="fa-solid fa-circle-exclamation"></i>
-        </div>
-        <p>Vous devez renseigner au moins un tag pour la tache.</p>
-        <button id="tagClose" class="close">Fermer</button>
-      </dialog>
-      <dialog id="dialogAll">
-        <div class="title" tabindex="-1">
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <h1>Erreur</h1>
-          <i class="fa-solid fa-circle-exclamation"></i>
-        </div>
-        <p>Vous devez renseigner un nom de tâche.<br>Vous devez renseigner au moins un tag pour la tache.</p>
-        <button id="allClose" class="close">Fermer</button>
+        <p id="texteModal"></p>
+        <button class="close">Fermer</button>
       </dialog>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/create_task.js"></script>
     <script src="js/url.js"></script>
+    <script src="js/modal.js"></script>
   </body>
 
 </html>

@@ -5,10 +5,11 @@ const accesStats = document.getElementById("stats");
 
 window.addEventListener("load", async function() {
     try {
-        console.log(location)
+        // Appel à l'API Pour récupérer la liste des tâches
         const response = await fetch(url_API);
         const json = await response.json();
         const todolist = json[0].todolist.sort((a,b) => a.is_complete - b.is_complete);
+        console.info(todolist);
         for (const todo of todolist) {
             // On recupere l'element du template
             let card = template.content.cloneNode(true);

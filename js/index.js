@@ -12,6 +12,8 @@ form.addEventListener('submit', (e) => {
     } catch (error) {
         inputPrenom.classList.add('error');
         console.error(error.message);
+        setTitreModal('Erreur');
+        setTexteModal('Vous devez d\'abord renseigner un prénom avant d\'accéder à la liste des tâches.');
         dialog.showModal();
     }
 })
