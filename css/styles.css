@@ -11584,6 +11584,14 @@ dialog .close {
   opacity: 0.5;
 }
 
+dialog .valider {
+  font-size: 1.5rem;
+  box-sizing: content-box;
+  border: 0;
+  border-radius: 0.5rem;
+  opacity: 0.5;
+}
+
 ::backdrop {
   background-color: rgba(26, 188, 156, 0.9);;
   opacity: 0.75;

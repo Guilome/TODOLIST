@@ -2,6 +2,10 @@ const fermer = document.getElementById('fermer');
 const ouvrir = document.getElementById('ouvrir');
 const supprimer = document.getElementById('supprimer');
 const retourListe = document.getElementById("retourListe");
+const dialog = document.querySelector("dialog");
+const dialogValidation = document.querySelector("dialog#validation");
+const fermerModal = document.querySelector('button.close');
+const validationSuppression = document.querySelector('button.valider');
 let idTache = 0;
 let tache = null;
 
@@ -34,15 +38,37 @@ window.addEventListener("load", async function() {
     }
 });
 
-supprimer.addEventListener("click", async function () {
+fermerModal.addEventListener('click', function() {
+    if (dialog.open){
+        dialog.close();
+    } else {
+        dialogValidation.close();
+    }
+});
+
+validationSuppression.addEventListener('click', async function() {
     try {
-        await fetch(`${url_API}/${idTache}`, {method: "DELETE"});
-        // Une fois la suppression faite on redirige vers la liste des taches
-        navigation("tasks.html")
+        await fetch(
+            `${url_API}/${idTache}`, {
+                method: "DELETE"
+            }).then(r => {
+            if (r.ok) {
+                // Une fois la suppression faite on redirige vers la liste des taches
+                navigation("tasks.html");
+            } else {
+                setTitreModal(`Erreur ${r.status}`);
+                setTexteModal(`Message d'erreur : ${r.statusText}`);
+                dialog.showModal();
+                throw new Error(`Erreur ${r.status} lors de la suppression de la tache.\nMessage d'erreur : ${r.statusText}`);
+            }
+        });
     } catch (error) {
         console.error(error.message);
     }
+});
 
+supprimer.addEventListener("click", function () {
+    dialogValidation.showModal();
 });
 
 retourListe.addEventListener("click", async e => {
@@ -75,6 +101,9 @@ function changerStatut() {
             // On recharge la page
             window.location.reload();
         } else {
+            setTitreModal(`Erreur ${r.status}`);
+            setTexteModal(`Message d'erreur : ${r.statusText}`);
+            dialog.showModal();
             throw new Error(`Erreur ${r.status} lors du changement de statut de la tache.\nMessage d'erreur : ${r.statusText}`);
         }
     }).catch(
