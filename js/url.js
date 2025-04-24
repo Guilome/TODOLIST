@@ -1,4 +1,4 @@
-const url_API = "http://localhost:3000/todos";
+const url_API = "https://totolist-back.vercel.app/todos";
 
 // Fait la direction entre les différentes pages du site
 function navigation(direction) {
